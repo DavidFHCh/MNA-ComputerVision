@@ -5,13 +5,18 @@ description = ""
 authors = [
     {name = "David Felipe Hernandez Chiapa",email = "davifep.96@gmail.com"}
 ]
-requires-python = ">=3.14"
+requires-python = ">=3.13,<3.14"
 dependencies = [
     "matplotlib (>=3.11.2,<4.0.0)",
     "numpy (>=2.5.3,<3.0.0)",
     "opencv-python (>=5.0.0.93,<6.0.0.0)",
-    "scikit-image (>=0.26.0,<0.27.0)"
+    "scikit-image (>=0.26.0,<0.27.0)",
+    "torch (>=2.11.0,<2.12.0)",
+    "torchvision (>=0.26.0,<0.27.0)"
 ]
+
+[tool.poetry]
+package-mode = false
 
 
 [build-system]
@@ -23,3 +28,13 @@ dev = [
     "ipykernel (>=7.3.0,<8.0.0)",
     "notebook (>=7.6.3,<8.0.0)"
 ]
+
+[[tool.poetry.source]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+priority = "explicit"
+
+[tool.poetry.dependencies]
+torch = { version = ">=2.11.0,<2.12.0", source = "pytorch-cu128" }
+torchvision = { version = ">=0.26.0,<0.27.0", source = "pytorch-cu128" }
+
